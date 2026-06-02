@@ -1,0 +1,927 @@
+<html lang="ko" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">ClipEdu - 학원 마케팅 솔루션</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" crossorigin="anonymous" vid="6">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" vid="7">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" vid="8">
+    <script vid="9">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            base: '#FAFAFC',
+                            primary: '#111119',
+                            secondary: '#52525B',
+                            tertiary: '#A1A1AA',
+                            border: 'rgba(17, 17, 25, 0.08)',
+                        }
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.02em',
+                        normal: '0',
+                        wide: '0.02em',
+                        wider: '0.05em',
+                        widest: '0.1em',
+                    },
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                        'wave': 'wave 25s linear infinite',
+                        'wave2': 'wave2 25s linear infinite',
+                        'wave': 'wave 25s linear infinite',
+                        'wave2': 'wave2 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style vid="10">
+        body {
+            background-color: theme('colors.brand.base');
+            color: theme('colors.brand.primary');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        
+        .bg-hero-gradient {
+            background: 
+                radial-gradient(ellipse 100% 80% at 60% 0%, rgba(186, 230, 253, 0.5) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 90% at 10% 100%, rgba(219, 234, 254, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 60% at 90% 80%, rgba(224, 242, 254, 0.4) 0%, transparent 50%),
+                #FAFAFC;
+        }
+
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-item.active .accordion-content {
+            opacity: 1;
+        }
+        
+        
+        .logo-megastudy { font-family: -apple-system, sans-serif; letter-spacing: -0.05em; font-weight: 800; font-size: 1.75rem; text-transform: lowercase; }
+        .logo-cheongsol { font-family: 'Pretendard', sans-serif; font-weight: 900; font-size: 1.5rem; }
+        .logo-ybm { font-family: Arial, sans-serif; font-weight: 900; font-style: italic; font-size: 1.875rem; }
+        .logo-etoos { font-family: sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 1.75rem; }
+
+        .watermark {
+            font-size: 24vw;
+            font-weight: 900;
+            color: rgba(17, 17, 25, 0.02);
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+    </style>
+</head>
+<body class="w-full h-full overflow-x-hidden" vid="11">
+
+    
+    <header class="fixed top-0 w-full px-8 md:px-16 py-3 flex justify-between items-center z-50 bg-white/60 backdrop-blur-xl border-b border-white/20" vid="12">
+        <a href="#" class="flex items-center" vid="13">
+            <img src="assets/clipedu-logo.png" alt="클립에듀" class="h-7 w-auto" />
+        </a>
+        
+        <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-12 text-[15px] font-medium text-brand-secondary" vid="15">
+            <a href="#solutions" class="hover:text-brand-primary transition-colors" vid="16">솔루션</a>
+            <a href="#cases" class="hover:text-brand-primary transition-colors" vid="17">도입사례</a>
+            <a href="#faq" class="hover:text-brand-primary transition-colors" vid="18">FAQ</a>
+            <a href="#contact" class="hover:text-brand-primary transition-colors" vid="19">지원센터</a>
+        </nav>
+
+    </header>
+
+    <main class="w-full" vid="23">
+        
+        <section class="relative min-h-[90vh] pt-[15vh] flex flex-col bg-hero-gradient overflow-hidden" vid="24">
+            
+            <div class="absolute top-[5%] left-[-10%] w-[600px] h-[600px] rounded-full bg-sky-200/30 blur-[120px] animate-[float_18s_ease-in-out_infinite] pointer-events-none" vid="25"></div>
+            <div class="absolute bottom-[15%] right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-100/40 blur-[100px] animate-[float_22s_ease-in-out_infinite_reverse] pointer-events-none" vid="26"></div>
+            <div class="absolute top-[50%] left-[60%] w-[350px] h-[350px] rounded-full bg-cyan-100/25 blur-[90px] animate-[float_15s_ease-in-out_infinite] pointer-events-none" vid="27"></div>
+
+            <div class="flex-1 flex flex-col items-center justify-center text-center px-6 md:px-16 relative z-10 w-full max-w-3xl mx-auto pt-8 md:pt-0" vid="28">
+                
+                
+                <div class="flex flex-col items-center text-center w-full" vid="29">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-border bg-white/50 backdrop-blur-sm mb-8" vid="30">
+                    <span class="text-xs font-bold tracking-wider uppercase text-brand-secondary" vid="31">Academy Marketing</span>
+                </div>
+                
+                <h1 class="text-3xl md:text-[2.5rem] lg:text-[3.25rem] font-bold leading-[1.2] tracking-tight text-brand-primary mb-6" vid="36">
+                    수업은 원장님이,<br vid="37">
+                    학원 마케팅은 클립에듀가
+                </h1>
+
+                <p class="text-lg md:text-xl text-brand-secondary font-normal mb-12 tracking-tight max-w-lg" vid="39">
+                    플레이스 · 블로그 · 인스타 · 언론까지<br vid="40">
+                    학원에 필요한 모든 마케팅을 클립에듀가 대행합니다.
+                </p>
+
+                <a href="#contact" class="inline-flex items-center gap-4 px-2 py-2 pr-6 border border-brand-border rounded-full bg-white/40 backdrop-blur-md text-brand-primary font-medium text-lg hover:bg-white/80 transition-colors" vid="41">
+                    <div class="w-12 h-12 bg-brand-primary rounded-full flex items-center justify-center text-white" vid="42">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vid="43">
+                            <line x1="5" y1="12" x2="19" y2="12" vid="44"></line>
+                            <polyline points="12 5 19 12 12 19" vid="45"></polyline>
+                        </svg>
+                    </div>
+                    우리학원 무료진단 신청하기
+                </a>
+                
+                </div>
+                
+                
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none" vid="46">
+                    <div class="w-[460px] h-[460px] md:w-[640px] md:h-[640px] rounded-full bg-[conic-gradient(from_180deg_at_50%_50%,#60A5FA_0deg,#3B82F6_120deg,#06B6D4_240deg,#60A5FA_360deg)] opacity-40 blur-[55px] relative animate-[float_20s_ease-in-out_infinite]" vid="47">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent" vid="48"></div>
+                        <div class="absolute -inset-8 rounded-full bg-blue-400/20 blur-[60px]" vid="49"></div>
+                        <div class="absolute inset-0 rounded-full border border-white/20 shadow-[inset_0_0_40px_rgba(255,255,255,0.2)]" vid="50"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="w-full border-t border-brand-border bg-white/30 backdrop-blur-sm mt-24" vid="51">
+                <div class="max-w-7xl mx-auto px-8 md:px-16 py-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 md:gap-0" vid="52">
+                    <div class="text-sm text-brand-secondary max-w-xs leading-relaxed" vid="53">
+                        <strong class="text-brand-primary text-base block mb-2 font-semibold" vid="54">데이터 기반 확신</strong>
+                        막연한 마케팅이 아닌, 수치로 증명되는 정교한 타겟팅으로 학원의 성장을 견인합니다.
+                    </div>
+                    
+                    <div class="flex flex-wrap md:flex-nowrap gap-10 md:gap-16">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-secondary leading-snug">누적 파트너 학원</span>
+                            <span class="flex items-baseline gap-0.5 text-brand-primary"><span class="text-5xl md:text-6xl font-bold tracking-tighter leading-none">6,000</span><span class="text-base font-bold">+</span></span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-secondary leading-snug">평균 유입 증가율</span>
+                            <span class="flex items-baseline gap-0.5 text-brand-primary"><span class="text-5xl md:text-6xl font-bold tracking-tighter leading-none">283</span><span class="text-base font-bold">%</span></span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-secondary leading-snug">매월 성과 리포트</span>
+                            <span class="flex items-baseline gap-0.5 text-brand-primary"><span class="text-5xl md:text-6xl font-bold tracking-tighter leading-none">28</span><span class="text-base font-bold">일</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="py-32 w-full bg-white" vid="71">
+            <div class="max-w-7xl mx-auto px-8 md:px-16" vid="72">
+                <div class="text-center mb-20" vid="73">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight" vid="74">
+                        광고비는 나가는데,<br vid="75">원생은 왜 안 늘까요?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20" vid="76">
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 relative" vid="77">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8" vid="78">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-brand-secondary" vid="79">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" vid="80"></path>
+                            </svg>
+                        </div>
+                        <p class="text-lg text-brand-primary leading-relaxed font-medium" vid="81">
+                            "학부모가 검색하면 옆 학원만 나오고<br vid="82">우리 학원은 보이질 않아요"
+                        </p>
+                    </div>
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 relative" vid="83">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8" vid="84">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-brand-secondary" vid="85">
+                                <circle cx="12" cy="12" r="10" vid="86"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12" vid="87"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16" vid="88"></line>
+                            </svg>
+                        </div>
+                        <p class="text-lg text-brand-primary leading-relaxed font-medium" vid="89">
+                            "전단·광고에 돈을 써도<br vid="90">어디서 원생이 오는지 알 수가 없어요"
+                        </p>
+                    </div>
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 relative" vid="91">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8" vid="92">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-brand-secondary" vid="93">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" vid="94"></path>
+                                <circle cx="12" cy="12" r="3" vid="95"></circle>
+                                <line x1="3" y1="3" x2="21" y2="21" vid="96"></line>
+                            </svg>
+                        </div>
+                        <p class="text-lg text-brand-primary leading-relaxed font-medium" vid="97">
+                            "대행을 맡겨봤지만<br vid="98">매달 뭘 하는지, 효과는 있는지 깜깜했어요"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative text-center bg-brand-primary text-white rounded-[0_24px_24px_24px] p-12 md:p-16 overflow-visible" vid="99">
+                    <div class="absolute -top-8 left-0 bg-brand-primary px-6 py-2 rounded-t-xl text-sm font-bold tracking-wider uppercase text-white/80" vid="100">ClipEdu Insight</div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-sky-400/10 blur-2xl" vid="101"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-cyan-400/10 blur-2xl" vid="102"></div>
+                    <h3 class="relative text-2xl md:text-3xl font-medium tracking-tight mb-4" vid="103">학원 모집은 '운'이 아니라 <span class="bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)] bg-clip-text text-transparent">'데이터'</span>입니다.</h3>
+                    <p class="relative text-white/70 text-lg" vid="104">무엇이 유입을 만드는지 정확히 알면, 결과는 달라집니다.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="solutions" class="relative py-32 w-full overflow-hidden" vid="105">
+            <div class="absolute inset-0 bg-[url('assets/section_bg.png')] bg-cover bg-center blur-[6px] scale-110 pointer-events-none"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-8 md:px-16" vid="106">
+                
+                <div class="text-center mb-24" vid="107">
+                    <h2 class="text-4xl md:text-[3.5rem] font-semibold tracking-tighter leading-[1.2] mb-6" vid="108">
+                        마케팅을 담당자 '감'에<br vid="109">맡기지 않습니다
+                    </h2>
+                    <p class="text-xl text-brand-secondary tracking-tight" vid="110">
+                        25년간 쌓은 지역 데이터를 학습한 AI가,<br vid="111">우리 학원에 꼭 필요한 마케팅만 골라 드립니다.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#3B82F6]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10"></path><path d="M12 12L2.5 6.5"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">유입경로 분석</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">설문 기반 정교한 유입경로 분석으로 효과적인 채널을 선별합니다.</p>                    </div>
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#10B981]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">지역 커뮤니티 활동</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">지역별 맘카페 및 학부모 커뮤니티 활동으로 입소문을 만듭니다.</p>                    </div>
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#3B82F6]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">네이버 플레이스</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">플레이스 최적화와 영수증 리뷰로 상위 노출을 확보합니다.</p>                    </div>
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#10B981]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">인스타·블로그·언론</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">브랜딩 콘텐츠부터 언론 보도까지 통합 운영합니다.</p>                    </div>
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#3B82F6]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">성과 리포트</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">매월 28일 데이터 기반 성과 보고서를 자동 발송합니다.</p>                    </div>
+
+                    <div class="flex flex-col items-center text-center rounded-3xl p-8 bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgba(31,41,99,0.08)]">
+                        <div class="w-12 h-12 mb-6 text-[#10B981]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-3">파트너 네트워크</h3>
+                        <p class="text-sm text-brand-secondary leading-relaxed mb-4">6,000+ 검증된 파트너 학원과 함께 성장합니다.</p>                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        
+        <section class="py-32 w-full bg-white" vid="334">
+            <div class="max-w-7xl mx-auto px-8 md:px-16" vid="335">
+                <span class="text-xs font-bold tracking-[0.1em] uppercase text-brand-secondary mb-4 block" vid="336">real method</span>
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-20" vid="337">클립에듀는 이렇게 일합니다</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative" vid="338">
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300" vid="339">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 text-brand-primary" vid="340">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" vid="341"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" vid="342"></path><polyline points="14 2 14 8 20 8" vid="343"></polyline><line x1="16" y1="13" x2="8" y2="13" vid="344"></line><line x1="16" y1="17" x2="8" y2="17" vid="345"></line><polyline points="10 9 9 9 8 9" vid="346"></polyline></svg>
+                        </div>
+                        <span class="text-sm font-bold text-brand-tertiary mb-3 tracking-wider" vid="347">STEP 01</span>
+                        <h4 class="text-xl font-medium tracking-tight mb-4" vid="348">학원 입지 분석 및 마케팅 기획</h4>
+                        <p class="text-brand-secondary leading-relaxed" vid="349">지역 상권과 학부모 타겟을 분석하여 최적의 마케팅 방향을 설정합니다.</p>
+                    </div>
+
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300" vid="350">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 text-brand-primary" vid="351">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" vid="352"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" vid="353"></path><circle cx="9" cy="7" r="4" vid="354"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87" vid="355"></path><path d="M16 3.13a4 4 0 0 1 0 7.75" vid="356"></path></svg>
+                        </div>
+                        <span class="text-sm font-bold text-brand-tertiary mb-3 tracking-wider" vid="357">STEP 02</span>
+                        <h4 class="text-xl font-medium tracking-tight mb-4" vid="358">각 분야별 전문가 배정</h4>
+                        <p class="text-brand-secondary leading-relaxed" vid="359">디자인, 블로그, 플레이스 등 각 영역별 전담 마케터를 배정합니다.</p>
+                    </div>
+
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300" vid="360">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 text-brand-primary" vid="361">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" vid="362"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" vid="363"></polygon></svg>
+                        </div>
+                        <span class="text-sm font-bold text-brand-tertiary mb-3 tracking-wider" vid="364">STEP 03</span>
+                        <h4 class="text-xl font-medium tracking-tight mb-4" vid="365">초기 기획 기반 전문가 마케팅 집행</h4>
+                        <p class="text-brand-secondary leading-relaxed" vid="366">세워진 전략에 맞춰 다채널 마케팅을 본격적으로 실행합니다.</p>
+                    </div>
+
+                    
+                    <div class="bg-brand-base rounded-3xl p-10 flex flex-col items-start hover:-translate-y-2 transition-transform duration-300" vid="367">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-8 text-brand-primary" vid="368">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" vid="369"><path d="M21.21 15.89A10 10 0 1 1 8 2.83" vid="370"></path><path d="M22 12A10 10 0 0 0 12 2v10z" vid="371"></path></svg>
+                        </div>
+                        <span class="text-sm font-bold text-brand-tertiary mb-3 tracking-wider" vid="372">STEP 04</span>
+                        <h4 class="text-xl font-medium tracking-tight mb-4" vid="373">경과를 지켜보며 수정 및 피드백</h4>
+                        <p class="text-brand-secondary leading-relaxed" vid="374">성과 리포트를 기반으로 전략을 최적화하고 원장님과 피드백을 나눕니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="py-32 w-full bg-hero-gradient" vid="375">
+            <div class="max-w-4xl mx-auto px-8 md:px-16" vid="376">
+                <span class="text-xs font-bold tracking-[0.1em] uppercase text-brand-secondary mb-4 block" vid="377">real solution</span>
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-16" vid="378">클립에듀가 다루는<br vid="379">3개 영역 12개 세부 항목</h2>
+
+                <div class="space-y-4" vid="380">
+                    
+                    <div class="accordion-item bg-white border border-brand-border rounded-2xl overflow-hidden active" vid="381">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="382">
+                            <h3 class="text-xl font-medium flex items-center gap-4" vid="383">
+                                <span class="text-brand-tertiary font-light" vid="384">01</span>
+                                원생 매칭 · 유입경로 분석
+                            </h3>
+                            <div class="icon w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-secondary transition-transform duration-300 transform rotate-180" vid="385">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="386"><polyline points="6 9 12 15 18 9" vid="387"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-white border-t border-brand-border/50" style="max-height: 500px; padding-bottom: 1.5rem; padding-top: 1.5rem;" vid="388">
+                            <ul class="space-y-4 text-brand-secondary text-lg" vid="389">
+                                <li class="flex items-start gap-3" vid="390"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="391"><polyline points="20 6 9 17 4 12" vid="392"></polyline></svg> 설문을 통한 유입경로 분석</li>
+                                <li class="flex items-start gap-3" vid="393"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="394"><polyline points="20 6 9 17 4 12" vid="395"></polyline></svg> 지역별 카페 활동을 통한 학원 홍보</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                    <div class="accordion-item bg-white border border-brand-border rounded-2xl overflow-hidden" vid="396">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="397">
+                            <h3 class="text-xl font-medium flex items-center gap-4" vid="398">
+                                <span class="text-brand-tertiary font-light" vid="399">02</span>
+                                온라인 광고 · 마케팅
+                            </h3>
+                            <div class="icon w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-secondary transition-transform duration-300" vid="400">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="401"><polyline points="6 9 12 15 18 9" vid="402"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-white border-t border-brand-border/50" vid="403">
+                            <ul class="space-y-4 text-brand-secondary text-lg" vid="404">
+                                <li class="flex items-start gap-3" vid="405"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="406"><polyline points="20 6 9 17 4 12" vid="407"></polyline></svg> 네이버 플레이스 최적화</li>
+                                <li class="flex items-start gap-3" vid="408"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="409"><polyline points="20 6 9 17 4 12" vid="410"></polyline></svg> 학부모 영수증 리뷰 확보</li>
+                                <li class="flex items-start gap-3" vid="411"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="412"><polyline points="20 6 9 17 4 12" vid="413"></polyline></svg> 인스타그램 브랜딩 &amp; 상위 노출</li>
+                                <li class="flex items-start gap-3" vid="414"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="415"><polyline points="20 6 9 17 4 12" vid="416"></polyline></svg> 
+                                    <div vid="417">
+                                        블로그 브랜딩
+                                        <div class="text-sm text-brand-tertiary mt-1" vid="418">↳ "왜 학원에 블로그가 필요한가" 6가지 이유 적용</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3" vid="419"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="420"><polyline points="20 6 9 17 4 12" vid="421"></polyline></svg> 
+                                    <div vid="422">
+                                        언론 홍보
+                                        <div class="text-sm text-brand-tertiary mt-1" vid="423">↳ "왜 학원에 언론 보도가 필요한가" 6가지 이유 적용</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3" vid="424"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="425"><polyline points="20 6 9 17 4 12" vid="426"></polyline></svg> 당근 타겟팅 홍보 &amp; 단골 확보</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                    <div class="accordion-item bg-white border border-brand-border rounded-2xl overflow-hidden" vid="427">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="428">
+                            <h3 class="text-xl font-medium flex items-center gap-4" vid="429">
+                                <span class="text-brand-tertiary font-light" vid="430">03</span>
+                                파트너스 · 성과
+                            </h3>
+                            <div class="icon w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-secondary transition-transform duration-300" vid="431">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="432"><polyline points="6 9 12 15 18 9" vid="433"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-white border-t border-brand-border/50" vid="434">
+                            <ul class="space-y-4 text-brand-secondary text-lg" vid="435">
+                                <li class="flex items-start gap-3" vid="436"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="437"><polyline points="20 6 9 17 4 12" vid="438"></polyline></svg> 15개+ 대표 파트너 학원 (메가스터디·청솔·YBM·이투스 등)</li>
+                                <li class="flex items-start gap-3" vid="439"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="440"><polyline points="20 6 9 17 4 12" vid="441"></polyline></svg> 데이터로 검증된 패키지별 실사례 제공</li>
+                                <li class="flex items-start gap-3" vid="442"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="443"><polyline points="20 6 9 17 4 12" vid="444"></polyline></svg> 매월 28일 성과 보고서 자동 발송 (알림톡)</li>
+                                <li class="flex items-start gap-3" vid="445"><svg class="mt-1 flex-shrink-0 text-brand-primary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="446"><polyline points="20 6 9 17 4 12" vid="447"></polyline></svg> 파트너 학원의 생생한 후기 공유</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="py-32 w-full bg-white relative overflow-hidden" vid="172">
+            <div class="relative z-10 max-w-7xl mx-auto px-8 md:px-16 text-center" vid="174">
+                <span class="text-xs font-bold tracking-[0.15em] uppercase text-brand-secondary mb-4 block" vid="175">전국 학원이 선택한 클립에듀</span>
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-20" vid="176">이미 검증된 파트너십</h2>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-10 gap-y-12 items-center max-w-5xl mx-auto mb-24">
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/메가스터디.jpg" alt="메가스터디" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/청솔학원.svg" alt="청솔학원" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/ybm.png" alt="YBM" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/이투스학원.svg" alt="이투스학원" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/한솔교육.png" alt="한솔교육" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/하이스트.png" alt="하이스트" loading="lazy" class="max-h-12 md:max-h-[3.25rem] w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/스마트해법.svg" alt="스마트해법" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/튼튼영어.svg" alt="튼튼영어" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/mbest.png" alt="엠베스트" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/dyb.svg" alt="DYB최선" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/soma.png" alt="SOMA" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/slp.png" alt="SLP" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/smma.jpg" alt="SMMA" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/made.png" alt="MADE" loading="lazy" class="max-h-9 md:max-h-10 w-auto object-contain"></div>
+                    <div class="flex items-center justify-center h-12"><img src="company%20logo/위드피아노.png" alt="위드피아노" loading="lazy" class="max-h-12 md:max-h-[3.25rem] w-auto object-contain"></div>
+                </div>
+
+                <!-- 카드 영역 임시 주석처리 
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-16" vid="182">
+                    <div class="group bg-[#f3f3f3] rounded-[24px] px-8 py-6 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)]" vid="183">
+                        <span class="text-base font-semibold text-brand-secondary leading-snug w-full text-left transition-colors duration-300 group-hover:text-white" vid="184">누적 파트너<br vid="185">학원</span>
+                        <div class="flex items-baseline justify-end gap-1 mt-auto w-full" vid="186">
+                            <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary transition-colors duration-300 group-hover:text-white" vid="187">6,000</span>
+                            <span class="text-sm font-medium text-brand-secondary transition-colors duration-300 group-hover:text-white/80" vid="188">+</span>
+                        </div>
+                    </div>
+                    <div class="group bg-[#f3f3f3] rounded-[24px] px-8 py-6 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)]" vid="189">
+                        <span class="text-base font-semibold text-brand-secondary leading-snug w-full text-left transition-colors duration-300 group-hover:text-white" vid="190">최대 조회수<br vid="191">달성</span>
+                        <div class="flex items-baseline justify-end gap-1 mt-auto w-full" vid="192">
+                            <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary transition-colors duration-300 group-hover:text-white" vid="193">3,958</span>
+                        </div>
+                    </div>
+                    <div class="group bg-[#f3f3f3] rounded-[24px] px-8 py-6 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)]" vid="194">
+                        <span class="text-base font-semibold text-brand-secondary leading-snug w-full text-left transition-colors duration-300 group-hover:text-white" vid="195">평균 유입<br vid="196">증가율</span>
+                        <div class="flex items-baseline justify-end gap-1 mt-auto w-full" vid="197">
+                            <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary transition-colors duration-300 group-hover:text-white" vid="198">283</span>
+                            <span class="text-sm font-medium text-brand-secondary transition-colors duration-300 group-hover:text-white/80" vid="199">%</span>
+                        </div>
+                    </div>
+                    <div class="group bg-[#f3f3f3] rounded-[24px] px-8 py-6 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)]" vid="200">
+                        <span class="text-base font-semibold text-brand-secondary leading-snug w-full text-left transition-colors duration-300 group-hover:text-white" vid="201">매월 성과<br vid="202">리포트</span>
+                        <div class="flex items-baseline justify-end gap-1 mt-auto w-full" vid="203">
+                            <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary transition-colors duration-300 group-hover:text-white" vid="204">28</span>
+                            <span class="text-sm font-medium text-brand-secondary transition-colors duration-300 group-hover:text-white/80" vid="205">일</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+        </section>
+        
+        
+        <section id="cases" class="py-32 w-full bg-brand-base overflow-hidden" vid="206">
+            <div class="max-w-7xl mx-auto px-8 md:px-16 mb-16 flex flex-col md:flex-row justify-between items-end gap-8" vid="207">
+                <div vid="208">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight" vid="209">데이터가 증명하는<br vid="210">성과 지표</h2>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-8 md:px-16 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4" vid="211">
+                <div class="bg-white border border-brand-border rounded-[24px] p-8 flex flex-col" vid="212">
+                    <div class="flex items-center justify-between gap-2 mb-6">
+                        <span class="text-sm font-bold uppercase tracking-wider text-brand-tertiary">25만 패키지</span>
+                        <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-600 font-bold text-sm px-2.5 py-1 rounded-full shrink-0">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>183%
+                        </span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-auto">
+                        <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary leading-none">374</span>
+                        <span class="text-base text-brand-secondary whitespace-nowrap">조회수</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-x-1.5 text-sm mt-3">
+                        <span class="line-through text-brand-tertiary">132</span>
+                        <span class="text-brand-tertiary">→</span>
+                        <span class="font-bold text-brand-primary">374</span>
+                        <span class="mx-1 text-brand-tertiary">·</span>
+                        <span class="text-emerald-600 font-bold">약 2.8배</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-brand-border rounded-[24px] p-8 flex flex-col" vid="222">
+                    <div class="flex items-center justify-between gap-2 mb-6">
+                        <span class="text-sm font-bold uppercase tracking-wider text-brand-tertiary">30만 패키지</span>
+                        <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-600 font-bold text-sm px-2.5 py-1 rounded-full shrink-0">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>226%
+                        </span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mt-auto">
+                        <span class="text-5xl md:text-6xl font-bold tracking-tighter text-brand-primary leading-none">3,958</span>
+                        <span class="text-base text-brand-secondary whitespace-nowrap">조회수</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-x-1.5 text-sm mt-3">
+                        <span class="line-through text-brand-tertiary">1,213</span>
+                        <span class="text-brand-tertiary">→</span>
+                        <span class="font-bold text-brand-primary">3,958</span>
+                        <span class="mx-1 text-brand-tertiary">·</span>
+                        <span class="text-emerald-600 font-bold">약 3.3배</span>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-brand-border rounded-[24px] p-8 flex flex-col" vid="232">
+                    <span class="text-sm font-bold uppercase tracking-wider text-brand-tertiary mb-2" vid="233">50만 패키지 A</span>
+                    <h4 class="text-lg font-medium text-brand-primary mb-2" vid="234">장기 유입 안정화</h4>
+                    <p class="text-sm text-brand-secondary leading-relaxed mb-6" vid="235">지속적인 콘텐츠 운영으로 단기 스파이크가 아닌 안정적인 유입 흐름을 만듭니다.</p>
+                    <div class="flex gap-1 mt-auto" vid="236">
+                        <div class="flex-1 h-8 bg-gray-200 rounded" vid="237"></div>
+                        <div class="flex-1 h-10 bg-gray-200 rounded" vid="238"></div>
+                        <div class="flex-1 h-9 bg-gray-200 rounded" vid="239"></div>
+                        <div class="flex-1 h-12 bg-brand-primary rounded" vid="240"></div>
+                        <div class="flex-1 h-10 bg-gray-200 rounded" vid="241"></div>
+                        <div class="flex-1 h-11 bg-gray-200 rounded" vid="242"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-brand-border rounded-[24px] p-8 flex flex-col" vid="243">
+                    <span class="text-sm font-bold uppercase tracking-wider text-brand-tertiary mb-2" vid="244">50만 패키지 B</span>
+                    <h4 class="text-lg font-medium text-brand-primary mb-2" vid="245">월별 꾸준한 상승</h4>
+                    <p class="text-sm text-brand-secondary leading-relaxed mb-6" vid="246">매월 데이터 기반 피드백 루프로 조회수가 꾸준히 누적되며 성장합니다.</p>
+                    <div class="flex items-end gap-1 mt-auto h-16" vid="247">
+                        <div class="flex-1 h-[30%] bg-brand-border rounded-t" vid="248"></div>
+                        <div class="flex-1 h-[45%] bg-brand-border rounded-t" vid="249"></div>
+                        <div class="flex-1 h-[40%] bg-brand-border rounded-t" vid="250"></div>
+                        <div class="flex-1 h-[60%] bg-brand-border rounded-t" vid="251"></div>
+                        <div class="flex-1 h-[75%] bg-blue-500 rounded-t" vid="252"></div>
+                        <div class="flex-1 h-[100%] bg-brand-primary rounded-t" vid="253"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="py-32 w-full bg-[#0A0A0F] overflow-hidden" vid="254">
+            <div class="max-w-7xl mx-auto px-8 md:px-16 mb-20 text-center" vid="255">
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight text-white" vid="256">원장님들의 후기가<br vid="257">모든 걸 말해줍니다</h2>
+                <p class="text-lg text-white/50 mt-4 max-w-2xl mx-auto" vid="258">플레이스·블로그·광고로 원생이 늘어난 학원들의 생생한 목소리를 그대로 전합니다.</p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-8 md:px-16" vid="259">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" vid="260">
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="261">
+                        <div class="flex items-center justify-between mb-4" vid="262">
+                            <div class="flex items-center gap-2" vid="263">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="264">송</div>
+                                <span class="text-xs text-white/30 font-medium" vid="265">송파****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="267">
+                            "어제 OO동 학원 검색하고 전화한다고 연락 받았습니다! 광고 덕이에요. 플레이스 노출이 이렇게 중요한지 몰랐네요."
+                        </p>
+                        <div class="flex items-center gap-2" vid="268">
+                            <span class="text-xs text-white/40" vid="270">송파구 ○○수학학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="271">
+                        <div class="flex items-center justify-between mb-4" vid="272">
+                            <div class="flex items-center gap-2" vid="273">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="274">영</div>
+                                <span class="text-xs text-white/30 font-medium" vid="275">영재****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="277">
+                            "요즘에 2,3학년 학생들 신입이 점점 들어오고 있어요~ 블로그 보고 왔다는 학부모님들이 많아져서 너무 감사합니다!"
+                        </p>
+                        <div class="flex items-center gap-2" vid="278">
+                            <span class="text-xs text-white/40" vid="280">목동 ○○영어학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="281">
+                        <div class="flex items-center justify-between mb-4" vid="282">
+                            <div class="flex items-center gap-2" vid="283">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="284">국</div>
+                                <span class="text-xs text-white/30 font-medium" vid="285">국어****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="287">
+                            "매달 28일 리포트 받아보는 재미가 있습니다. 우리가 돈을 어디에 쓰고 어떤 효과를 보는지 투명하게 알 수 있어서 좋아요."
+                        </p>
+                        <div class="flex items-center gap-2" vid="288">
+                            <span class="text-xs text-white/40" vid="290">대치동 ○○국어학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="291">
+                        <div class="flex items-center justify-between mb-4" vid="292">
+                            <div class="flex items-center gap-2" vid="293">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="294">과</div>
+                                <span class="text-xs text-white/30 font-medium" vid="295">과학****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="297">
+                            "플레이스 상위 노출 덕분에 상담 문의가 3배로 늘었어요. 정말 클립에듀 덕분에 학원이 활기를 되찾았습니다."
+                        </p>
+                        <div class="flex items-center gap-2" vid="298">
+                            <span class="text-xs text-white/40" vid="300">역삼동 ○○과학학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="301">
+                        <div class="flex items-center justify-between mb-4" vid="302">
+                            <div class="flex items-center gap-2" vid="303">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="304">수</div>
+                                <span class="text-xs text-white/30 font-medium" vid="305">수학****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="307">
+                            "블로그 보고 오신 학부모님께서 등록까지 완료하셨어요. 마케팅 효과가 바로 보이니 안심하고 맡길 수 있었습니다."
+                        </p>
+                        <div class="flex items-center gap-2" vid="308">
+                            <span class="text-xs text-white/40" vid="310">일산 ○○영재학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="311">
+                        <div class="flex items-center justify-between mb-4" vid="312">
+                            <div class="flex items-center gap-2" vid="313">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="314">입</div>
+                                <span class="text-xs text-white/30 font-medium" vid="315">입시****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="317">
+                            "전에는 전단지만 뿌렸는데, 이제는 온라인 유입이 더 많아요. 투자 대비 효과가 확실해서 만족스럽습니다."
+                        </p>
+                        <div class="flex items-center gap-2" vid="318">
+                            <span class="text-xs text-white/40" vid="320">분당 ○○입시학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#141419] rounded-2xl p-6 border border-white/5" vid="321">
+                        <div class="flex items-center justify-between mb-4" vid="322">
+                            <div class="flex items-center gap-2" vid="323">
+                                <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/40 font-bold" vid="324">독</div>
+                                <span class="text-xs text-white/30 font-medium" vid="325">독학****</span>
+                            </div>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4" vid="327">
+                            "원장님들끼리 후기도 공유되고, 클립에듀 파트너 네트워크가 큰 힘이 됩니다. 함께 성장하는 느낌이에요."
+                        </p>
+                        <div class="flex items-center gap-2" vid="328">
+                            <span class="text-xs text-white/40" vid="330">강남 ○○독학학원 원장님</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-[#10B981] to-[#059669] rounded-2xl p-6 flex flex-col justify-center items-center text-center" vid="331">
+                        <span class="text-sm font-medium text-white/90 mb-2" vid="332">서비스 만족도</span>
+                        <span class="text-4xl md:text-5xl font-bold text-white tracking-tighter" vid="333">100%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        
+        <section id="faq" class="py-32 w-full bg-white border-t border-brand-border/50 scroll-mt-20" vid="448">
+            <div class="max-w-4xl mx-auto px-8 md:px-16 text-center" vid="449">
+                <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4" vid="450">시작이 망설여지시나요?</h2>
+                <p class="text-lg text-brand-secondary mb-16" vid="451">약정 없이, 무료진단부터 시작해요.</p>
+                
+                <div class="space-y-4 text-left" vid="452">
+                    
+                    <div class="accordion-item bg-brand-base border border-brand-border rounded-2xl overflow-hidden" vid="453">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="454">
+                            <h3 class="text-lg font-medium flex items-center gap-3" vid="455">
+                                <span class="text-brand-primary font-bold" vid="456">Q.</span> 무료진단은 어떻게 진행되나요?
+                            </h3>
+                            <div class="icon text-brand-secondary transition-transform duration-300" vid="457">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="458"><line x1="12" y1="5" x2="12" y2="19" vid="459"></line><line x1="5" y1="12" x2="19" y2="12" vid="460"></line></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-brand-base" vid="461">
+                            <p class="text-brand-secondary leading-relaxed pb-6 pt-2" vid="462">
+                                우리 학원의 현재 노출·유입 상태를 분석해 어떤 채널을 보완해야 하는지 무료로 알려 드립니다.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-brand-base border border-brand-border rounded-2xl overflow-hidden" vid="463">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="464">
+                            <h3 class="text-lg font-medium flex items-center gap-3" vid="465">
+                                <span class="text-brand-primary font-bold" vid="466">Q.</span> 약정 기간이 있나요?
+                            </h3>
+                            <div class="icon text-brand-secondary transition-transform duration-300" vid="467">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="468"><line x1="12" y1="5" x2="12" y2="19" vid="469"></line><line x1="5" y1="12" x2="19" y2="12" vid="470"></line></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-brand-base" vid="471">
+                            <p class="text-brand-secondary leading-relaxed pb-6 pt-2" vid="472">
+                                장기 약정을 강요하지 않습니다. 진단 결과를 보고 필요한 부분만 선택하실 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-brand-base border border-brand-border rounded-2xl overflow-hidden" vid="473">
+                        <button class="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-gray-100 transition-colors focus:outline-none" onclick="toggleAccordion(this)" vid="474">
+                            <h3 class="text-lg font-medium flex items-center gap-3" vid="475">
+                                <span class="text-brand-primary font-bold" vid="476">Q.</span> 매달 무엇을 하는지 알 수 있나요?
+                            </h3>
+                            <div class="icon text-brand-secondary transition-transform duration-300" vid="477">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" vid="478"><line x1="12" y1="5" x2="12" y2="19" vid="479"></line><line x1="5" y1="12" x2="19" y2="12" vid="480"></line></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content px-8 bg-brand-base" vid="481">
+                            <p class="text-brand-secondary leading-relaxed pb-6 pt-2" vid="482">
+                                매월 28일, 블로그 조회수·플레이스 유입·리뷰 등 핵심 지표를 정리한 성과 보고서를 알림톡으로 자동 발송합니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="contact" class="py-32 w-full bg-hero-gradient relative" vid="483">
+            <div class="max-w-4xl mx-auto px-8 text-center relative z-10" vid="484">
+                <span class="inline-block px-4 py-1.5 rounded-full border border-brand-border bg-white/50 backdrop-blur-sm text-xs font-bold tracking-wider uppercase text-brand-primary mb-6" vid="485">신규 원생 유입, 매출 상승</span>
+                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight leading-tight mb-6" vid="486">
+                    지금 시작하면,<br vid="487">다음 학기가 다릅니다
+                </h2>
+                <p class="text-lg text-brand-secondary mb-12" vid="488">
+                    6,000개 이상의 파트너 학원이 클립에듀와 함께 성장하고 있습니다.<br vid="489">지금 상담을 시작하세요.
+                </p>
+                <form id="applyForm" novalidate onsubmit="event.preventDefault(); alert('신청이 접수되었습니다. 빠르게 연락드리겠습니다.'); this.reset();" class="max-w-xl mx-auto text-left bg-white rounded-3xl shadow-[0_20px_50px_-20px_rgba(31,41,99,0.25)] p-8 md:p-10">
+                    <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                        <div>
+                            <label for="af-academy" class="block text-sm font-bold text-brand-primary mb-2">학원명 <span class="text-brand-tertiary font-medium">(프랜차이즈는 지점명까지)</span></label>
+                            <input type="text" id="af-academy" name="academy" required placeholder="예) 클립에듀 어학원 강남점" class="w-full rounded-xl border border-brand-border bg-brand-base px-4 py-3.5 text-sm text-brand-primary placeholder:text-brand-tertiary focus:outline-none focus:border-[#4f86f7] focus:ring-2 focus:ring-[#4f86f7]/15 transition">
+                        </div>
+                        <div>
+                            <label for="af-phone" class="block text-sm font-bold text-brand-primary mb-2">전화번호</label>
+                            <input type="tel" id="af-phone" name="phone" required placeholder="회신받으실 번호를 적어주세요" class="w-full rounded-xl border border-brand-border bg-brand-base px-4 py-3.5 text-sm text-brand-primary placeholder:text-brand-tertiary focus:outline-none focus:border-[#4f86f7] focus:ring-2 focus:ring-[#4f86f7]/15 transition">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <label for="af-addr" class="block text-sm font-bold text-brand-primary mb-2">사업장 주소</label>
+                        <input type="text" id="af-addr" name="address" required placeholder="정확한 상담을 위해 입력 필수" class="w-full rounded-xl border border-brand-border bg-brand-base px-4 py-3.5 text-sm text-brand-primary placeholder:text-brand-tertiary focus:outline-none focus:border-[#4f86f7] focus:ring-2 focus:ring-[#4f86f7]/15 transition">
+                    </div>
+                    <div class="mb-5">
+                        <label class="block text-sm font-bold text-brand-primary mb-2">관심 항목 <span class="text-brand-tertiary font-medium">(중복 선택 가능)</span></label>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="checkbox" name="interest" value="match" class="peer sr-only"><span class="inline-block px-4 py-2 rounded-full border border-brand-border bg-white text-sm font-medium text-brand-secondary peer-checked:bg-[#4f86f7] peer-checked:text-white peer-checked:border-[#4f86f7] transition-colors">원생 매칭 운영</span></label>
+                            <label class="cursor-pointer"><input type="checkbox" name="interest" value="price" class="peer sr-only"><span class="inline-block px-4 py-2 rounded-full border border-brand-border bg-white text-sm font-medium text-brand-secondary peer-checked:bg-[#4f86f7] peer-checked:text-white peer-checked:border-[#4f86f7] transition-colors">비용 안내</span></label>
+                            <label class="cursor-pointer"><input type="checkbox" name="interest" value="etc" class="peer sr-only"><span class="inline-block px-4 py-2 rounded-full border border-brand-border bg-white text-sm font-medium text-brand-secondary peer-checked:bg-[#4f86f7] peer-checked:text-white peer-checked:border-[#4f86f7] transition-colors">기타 문의</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="af-msg" class="block text-sm font-bold text-brand-primary mb-2">신청 내용 <span class="text-brand-tertiary font-medium">(선택)</span></label>
+                        <textarea id="af-msg" name="message" placeholder="자유롭게 적어주세요" class="w-full rounded-xl border border-brand-border bg-brand-base px-4 py-3.5 text-sm text-brand-primary placeholder:text-brand-tertiary focus:outline-none focus:border-[#4f86f7] focus:ring-2 focus:ring-[#4f86f7]/15 transition min-h-[120px] resize-y"></textarea>
+                    </div>
+                    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-[linear-gradient(118deg,#7998f2_0%,#74e7fa_100%)] text-white font-bold text-base py-4 rounded-full shadow-lg shadow-[#4f86f7]/30 hover:opacity-95 transition">원생 매칭 신청하기 <span>→</span></button>
+                    <div class="text-center text-sm text-brand-secondary mt-5">👨‍👩‍👧 학부모로 매칭 신청하시려면 → <a href="https://keulribedyu-gyoyugbijiweongeum-peiji.onrender.com/education-support.html" target="_blank" rel="noopener" class="text-[#4f86f7] font-semibold hover:underline">학부모 지원금 페이지</a></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    
+    <footer class="bg-brand-base border-t border-brand-border py-20 px-8 md:px-16 w-full" vid="495">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 md:gap-8 mb-16" vid="496">
+            
+            <div vid="497">
+                <a href="#" class="flex items-center mb-4" vid="498">
+                    <img src="assets/clipedu-logo.png" alt="CLIPEDU" class="h-8 w-auto" />
+                </a>
+                <p class="text-sm text-brand-secondary font-medium" vid="500">학원을 위한 올인원 원생 매칭 솔루션</p>
+            </div>
+
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 text-sm text-brand-secondary" vid="501">
+                <div class="flex flex-col gap-1" vid="502">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-tertiary mb-1" vid="503">홈페이지</span>
+                    <span vid="504">clipedu-ai.co.kr</span>
+                </div>
+                <div class="flex flex-col gap-1" vid="505">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-tertiary mb-1" vid="506">인스타그램</span>
+                    <span vid="507">@clipedu_</span>
+                </div>
+                <div class="flex flex-col gap-1" vid="508">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-tertiary mb-1" vid="509">대표전화</span>
+                    <span vid="510">T. 070-8666-6788 / M. 010-7502-3587</span>
+                </div>
+                <div class="flex flex-col gap-1" vid="511">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-tertiary mb-1" vid="512">상담시간</span>
+                    <span vid="513">10:00 ~ 18:00 (주말/공휴일 제외)</span>
+                </div>
+                <div class="flex flex-col gap-1 sm:col-span-2 mt-2" vid="514">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-tertiary mb-1" vid="515">주소</span>
+                    <span vid="516">서울시 금천구 가산디지털2로 34, 더리브스마트타워 12F</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-brand-border flex flex-col sm:flex-row justify-between text-xs text-brand-tertiary" vid="517">
+            <p vid="518">© 2026 CLIPEDU INC. All Rights Reserved.</p>
+            <p class="mt-2 sm:mt-0" vid="519">PORTFOLIO 2026 · 학원 마케팅의 시작과 끝</p>
+        </div>
+    </footer>
+
+    
+    <script vid="520">
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.icon');
+            const isActive = item.classList.contains('active');
+
+            
+            const section = item.closest('section');
+            const allItems = section.querySelectorAll('.accordion-item');
+            
+            
+            allItems.forEach(i => {
+                i.classList.remove('active');
+                const iContent = i.querySelector('.accordion-content');
+                const iIcon = i.querySelector('.icon');
+                iContent.style.maxHeight = '0px';
+                iContent.style.paddingTop = '0px';
+                iContent.style.paddingBottom = '0px';
+                
+                
+                if(iIcon.innerHTML.includes('polyline points="6 9 12 15 18 9"')) {
+                    iIcon.style.transform = 'rotate(0deg)';
+                } else if(iIcon.innerHTML.includes('line x1="12" y1="5"')) {
+                     
+                     iIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+                     iIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            
+            if (!isActive) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 48 + "px"; 
+                content.style.paddingTop = '1.5rem';
+                content.style.paddingBottom = '1.5rem';
+                
+                if(icon.innerHTML.includes('polyline points="6 9 12 15 18 9"')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(90deg)';
+                    setTimeout(() => {
+                        icon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+                        icon.style.transform = 'rotate(0deg)';
+                    }, 150);
+                }
+            }
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-item.active').forEach(item => {
+                const button = item.querySelector('button');
+                const content = item.querySelector('.accordion-content');
+                const icon = item.querySelector('.icon');
+                
+                content.style.maxHeight = content.scrollHeight + 48 + "px";
+                content.style.paddingTop = '1.5rem';
+                content.style.paddingBottom = '1.5rem';
+                
+                if(icon.innerHTML.includes('polyline points="6 9 12 15 18 9"')) {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+
+</body></html>

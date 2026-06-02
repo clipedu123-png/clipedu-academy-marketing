@@ -1,0 +1,6 @@
+# 내부 기획 문서 (배포 저장소에서 제외)
+*.md
+
+# OS
+.DS_Store
+Thumbs.db
